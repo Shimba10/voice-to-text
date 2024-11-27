@@ -9,10 +9,8 @@ export const config = {
 };
 
 const handler = nextConnect();
-
 const configuration = new Configuration({
   apiKey: process.env.OPENAI_API_KEY,
-  organization: "org-iAUV31QM1NGKtBQ4cpSyXQET",
 });
 const openai = new OpenAIApi(configuration);
 
@@ -47,9 +45,13 @@ handler.post(async (req, res) => {
   });
 
   try {
+
     const audioBuffer = await readAudioBuffer(req);
+
     const audioReadStream = Readable.from(audioBuffer);
+
     audioReadStream.path = "temp.webm";
+
 
     const response = await openai.createTranscription(
       audioReadStream,
@@ -57,6 +59,7 @@ handler.post(async (req, res) => {
     );
 
     if (response.status !== 200) {
+
       res.status(response.status).json({ error: "Error transcribing audio" });
       return;
     }

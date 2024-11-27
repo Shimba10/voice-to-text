@@ -41,7 +41,7 @@ export default function Home() {
           <Transcript transcript={transcript} />
         </div>
         <div className={styles.footer}>
-          made by <a href="http://whichlight.com">whichlight</a>
+          made by <p>Simanchal Polai</p>
         </div>
       </main>
     </div>

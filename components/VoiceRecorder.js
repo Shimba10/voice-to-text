@@ -57,6 +57,7 @@ const VoiceRecorder = ({ onTranscription }) => {
       });
 
       const data = await response.json();
+      console.log(data,'2222222222222')
       onTranscription(data.transcription);
     } catch (error) {
       console.error("Error fetching transcription:", error);
